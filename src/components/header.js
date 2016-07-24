@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router'
 
 
 export default class Header extends Component {
@@ -7,10 +8,10 @@ export default class Header extends Component {
 			<nav className="navbar navbar-light">
 				<ul className="nav navbar-nav">
 					<li className="nav-item">
-						<a>Home</a>
+						<Link to="/">Home</Link>
 					</li>
 					<li className="nav-item">
-						<a>Resources</a>
+						<Link to="/posts">Posts</Link>
 					</li>
 					<li className="nav-item">
 						<button>Sign In</button>
