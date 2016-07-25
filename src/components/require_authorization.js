@@ -23,7 +23,7 @@ export default function(ComposedComponent) {
 		}
 
 		render() {
-			console.log(this.context)
+			// console.log(this.context)
 			// console.log(ComposedComponent);
 			// console.log(this.props.authenticated);
 			return <ComposedComponent {...this.props} />

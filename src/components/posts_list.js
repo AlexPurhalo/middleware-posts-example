@@ -1,22 +1,33 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import * as actions from '../actions';
 
 class PostsList extends Component {
-	constructor(props) {
-		super(props);
-
-		this.state = {posts: [{id: 1, content: 'hello world'}, {id: 2, content: 'fuck yeah'}, {id: 3, content: 'last third'}]};
+	componentWillMount() {
+		this.props.fetchPosts();
 	}
 
 	render() {
 		return (
-			<div>
+			<ul className="list-group">
 				<h4>All Posts</h4>
 				{
-					this.state.posts.map(post => { return <p key={post.id}>{post.content}</p>})
+					this.props.posts.map(post => {
+						return (
+							<li className="list-group-item" key={post.id}>
+								<h5>{post.title}</h5>
+								<p>{post.body}</p>
+							</li>
+						);
+					})
 				}
-			</div>
+			</ul>
 		);
 	}
 }
 
-export default PostsList;
+function mapStateToProps(state) {
+	return { posts: state.posts }
+}
+
+export default connect(mapStateToProps, actions)(PostsList);
