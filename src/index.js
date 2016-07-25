@@ -7,9 +7,10 @@ import { Router, Route, browserHistory } from 'react-router';
 import App from './components/app';
 import requireAuth from './components/require_authorization';
 import Posts from './components/posts_page';
+import Async from './middleweares/async';
 import reducers from './reducers';
 
-const createStoreWithMiddleware = applyMiddleware()(createStore);
+const createStoreWithMiddleware = applyMiddleware(Async)(createStore);
 
 ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>
